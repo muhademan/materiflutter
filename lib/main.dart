@@ -21,20 +21,22 @@ class MyHomePage extends StatelessWidget {
         title: Text('Belajar Flutter'),
       ),
       body: Container(
-        
-          margin: EdgeInsets.all(20),
-        height: 200,
-        width: 200,
-        alignment: Alignment.bottomCenter,
-          color: Colors.grey,
-          child: Text('Ayo Belajar Flutter',
-            style: TextStyle(fontStyle: FontStyle.italic,
-                fontSize: 20,
-                color: Colors.red
+          decoration: BoxDecoration(
+            color: const Color(0xff7c94b6),
+            image: const DecorationImage(
+              image: NetworkImage('https://i.pinimg.com/originals/91/86/6b/91866b918c9cca0747f483a46943e926.jpg'),
+              fit: BoxFit.cover,
             ),
-
-          )
-      ),
-    );
+            border: Border.all(
+              color: Colors.black,
+              width: 8,
+            ),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          height: 280,
+          width: 200,
+          margin: EdgeInsets.all(20)
+            )
+          );
   }
 }
