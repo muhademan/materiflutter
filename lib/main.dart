@@ -20,24 +20,19 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Belajar Layout'),
       ),
-      body: Row(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            color: Colors.greenAccent,
-            child: FlutterLogo(
-              size: 60.0,
+          Container(color: Colors.greenAccent,
+          child: FlutterLogo(size: 60.0
+          ),
+          ),
+          Container(color: Colors.blueAccent,
+            child: FlutterLogo(size: 60.0
             ),
           ),
-          Container(
-            color: Colors.orangeAccent,
-            child: FlutterLogo(
-              size: 60.0,
-            ),
-          ),
-          Container(
-            color: Colors.purpleAccent,
-            child: FlutterLogo(
-              size: 60.0,
+          Container(color: Colors.redAccent,
+            child: FlutterLogo(size: 60.0
             ),
           ),
         ],
