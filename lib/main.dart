@@ -20,8 +20,14 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Belajar Flutter'),
       ),
-      body: Center(
-          child: Text('Ini Text Pertama Saya',
+      body: Container(
+        
+          margin: EdgeInsets.all(20),
+        height: 200,
+        width: 200,
+        alignment: Alignment.bottomCenter,
+          color: Colors.grey,
+          child: Text('Ayo Belajar Flutter',
             style: TextStyle(fontStyle: FontStyle.italic,
                 fontSize: 20,
                 color: Colors.red
