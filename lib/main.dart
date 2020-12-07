@@ -15,7 +15,8 @@ class BelajarStackWidget extends StatelessWidget{
           appBar: AppBar(
             title: Text("Belajar Stack Widget"),
           ),
-          body: Stack(
+          body: IndexedStack(
+            index: 1,
             children: <Widget>[
               Container(color: Colors.green,
               ),
