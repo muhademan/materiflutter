@@ -1,32 +1,42 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    home: BelajarStackWidget(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class BelajarStackWidget extends StatelessWidget{
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return MaterialApp(
-        home: MyHomePage(),
-      );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Belajar Layout'),
-      ),
-      body: GridView.extent(maxCrossAxisExtent: 400,
-      children: <Widget>[
-        FlutterLogo(),
-        FlutterLogo(),
-        FlutterLogo(),
-        FlutterLogo(),
-      ],),
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text("Belajar Stack Widget"),
+          ),
+          body: Stack(
+            children: <Widget>[
+              Container(color: Colors.green,
+              ),
+              Container(color: Colors.red,
+                height: 400.0,
+                width: 300.0,
+              ),
+              Positioned(
+                right: 40.0,
+                top: 100.0,
+                child: Container(color: Colors.deepPurple,
+                  height: 200.0,
+                  width: 200.0,
+                ),
+              )
+            ],
+          ),
+        )
     );
+    }
   }
-}
+
+
+
