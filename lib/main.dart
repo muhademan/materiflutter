@@ -9,88 +9,59 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ContohDynamicAppBar(),
+      home: BelajarNavBar(),
     );
   }
 }
 
-class ContohDynamicAppBar extends StatelessWidget {
+class BelajarNavBar extends StatefulWidget {
+  @override
+  _BelajarNavBarState createState() => _BelajarNavBarState();
+}
+
+class _BelajarNavBarState extends State<BelajarNavBar> {
+
+  int _selectedNavbar = 0;
+  void _changeSelectedNavBar(int index) {
+    setState(() {
+      _selectedNavbar = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Material(
-        child: CustomScrollView(
-          slivers: [
-            SliverPersistentHeader(
-              delegate: MySliverAppBar(expandedHeight: 200),
-              pinned: true,
-            ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (_, index) => ListTile(
-                  title: Text("Song $index"),
-                ),
-              ),
-            )
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("belajarFlutter.com"),
+      ),
+      body: Center(
+        child: Text("Ini Home"),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: Text('Beranda'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            title: Text('Pesanan'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mail),
+            title: Text('Inbox'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            title: Text('Akun'),
+          ),
+        ],
+        currentIndex: _selectedNavbar,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+        onTap: _changeSelectedNavBar,
       ),
     );
   }
-}
-
-class MySliverAppBar extends SliverPersistentHeaderDelegate {
-  final double expandedHeight;
-
-  MySliverAppBar({@required this.expandedHeight});
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Stack(
-      fit: StackFit.expand,
-      overflow: Overflow.visible,
-      children: [
-        Image(
-          image: AssetImage('assets/images/Babymetal-Metal-Galaxy.jpg'),
-          fit: BoxFit.cover,
-        ),
-        Center(
-          child: Opacity(
-            opacity: shrinkOffset / expandedHeight,
-            child: Text(
-              "BabyMetal di BelajarFlutter",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                fontSize: 20,
-              ),
-            ),
-          ),
-        ),
-        Positioned(
-          top: expandedHeight / 2 - shrinkOffset,
-          left: MediaQuery.of(context).size.width / 4,
-          child: Opacity(
-            opacity: (1 - shrinkOffset / expandedHeight),
-            child: ClipOval(
-              child: Image(
-                width: MediaQuery.of(context).size.width / 2,
-                image: AssetImage('assets/images/babymetal-1.png'),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  @override
-  double get maxExtent => expandedHeight;
-
-  @override
-  double get minExtent => kToolbarHeight;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
 }
